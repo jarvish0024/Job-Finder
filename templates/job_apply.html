@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Apply{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3">
+            <h3>Apply</h3>
+            <hr>
+            <form action="" method="POST" novalidate class="shadow p-5">
+            {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" placeholder="fullname" name="fullname">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone No.</label>
+                    <input type="number" class="form-control" placeholder="phone no" name="phone">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Previous Company Name</label>
+                    <input type="text" class="form-control" name="prev-company-name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Education</label>
+                    <select type="text" name='edu' class="form-select" aria-label="Default select example">
+                        <option selected>Select here</option>
+                        <option value="10th">10th</option>
+                        <option value="10th">12th</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Bachlor">Bachelor's</option>
+                        <option value="Doctrate">Doctrate</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Experience</label>
+                    <input type="number" class="form-control" placeholder="Experience in years" name="experience">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Resume : </label>
+                    <input type="file" class="form-file" placeholder="resume" name="resume">
+                </div>
+                {% comment %} <div class="mb-3">
+                    <label class="form-label">Date</label>
+                    <input type="datetime-local" class="form-control" placeholder="date" name="date">
+                </div> {% endcomment %}
+                <div style='text-align: center;'>
+                    <input type="submit" style="border-radius: 100px;" class="btn btn-primary mt-4" value="Submit">
+                    <input type="reset" style="border-radius: 100px;" class="btn btn-danger mt-4" value="Reset">
+                </div>
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class="alert alert-danger my-3">{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

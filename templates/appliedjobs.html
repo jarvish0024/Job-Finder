@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Applied Jobs{% endblock title %}
+{% block content %}
+<!-- single-job-content -->
+<div class="col-md-8 offset-md-2"><hr>
+<div class="single-job-items mb-30">
+    <div class="single-job-items mb-30">
+    {% for a in list %}
+        <div class="job-items">
+            <div class="company-img">
+                <a href="#"><img src="{% static 'assets/img/icon/job-list1.png' %}" alt=""></a>
+            </div>
+            <div class="job-tittle job-tittle2">
+                <a href="{% url 'applied_job_details' a.id %}">
+                    <h4>{{a.full_name}}</h4>
+                </a>
+                <ul>
+                    <li>{{a.email}}</li>
+                    <li><i class="fas fa-map-marker-alt"></i>Previous Company : {{a.previous_company_name}}</li>
+                    <li>Exp : {{a.experience}}</li><br>
+                </ul>
+            </div>
+        </div>
+        <div class="items-btn items-link2 f-right">
+            {% comment %} <button href="{% url 'job_details' a.id %}" style="border-radius: 100px;" class="btn">Applied</button> {% endcomment %}
+            <a href="{% url 'applied_job_details' a.id %}" style="border-radius: 100px;" class="btn">Applied</a>
+            <br><span>+91 {{a.contact}}</span>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock content %}

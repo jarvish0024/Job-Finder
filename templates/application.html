@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Post Application{% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3">
+            <h3>Post Job Application</h3>
+            <hr>
+            <form action="" method="POST" novalidate class="shadow p-5">
+            {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Company Name</label>
+                    <input type="text" class="form-control" placeholder="Companyname" name="companyname">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Post</label>
+                    <input type="text" class="form-control" placeholder="post" name="post">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Job Mode</label>
+                    <select type="text" name='jobmode' class="form-select" aria-label="Default select example">
+                        <option selected>Select any Mode</option>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                        <option value="Work from Home">Work from Home</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Job Description</label>
+                    <input type="text" class="form-control" placeholder="Description" name="job_description">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" placeholder="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Timing</label>
+                    <input type="number" class="form-control" min='6' max='10' placeholder="Hrs" name="time">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Country</label>
+                    <select type="text" name='country' class="form-select" aria-label="Default select example">
+                        <option selected>Please Select Country</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="Russia">Russia</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">State</label>
+                    <select type="text" name='state' class="form-select" aria-label="Default select example">
+                        <option selected>Please Select State</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="TamilNadu">TamilNadu</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">From Salary</label>
+                    <input type="number" class="form-control" placeholder="Salary in Rupees" name="from_salary">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">To salary</label>
+                    <input type="number" class="form-control" placeholder="Salary in Rupees" name="to_salary">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Date</label>
+                    <input type="datetime-local" class="form-control" placeholder="date" name="date">
+                </div>
+                <div style='text-align: center;'>
+                    <input type="submit" style="border-radius: 100px;" class="btn btn-primary mt-4" value="Submit">
+                    <input type="reset" style="border-radius: 100px;" class="btn btn-danger mt-4" value="Reset">
+                </div>
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class="alert alert-danger my-3">{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
